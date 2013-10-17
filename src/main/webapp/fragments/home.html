@@ -1,22 +1,7 @@
-<div class="row" ng-controller="SearchController">
-    <div class="col-md-8 col-md-offset-2">
-        <div class=" input-group">
-            <input type="text" class="form-control" name="query" ng-model="query" placeholder="search">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">L</button>
-                    <button class="btn btn-default" type="button" ng-click="search();">
-                        <span class="glyphicon glyphicon-trash"></span>
-                    </button>
-                  </span>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-8 col-md-offset-2 text-center">
-        Popular searches:
-        <populars ng-repeat="p in popular">
-            <a class="tag" href="#/products/search?q={{p}}">{{p}}</a>
-            <separator ng-="first || middle"> |</separator>
-        </populars>
+<div class="jumbotron">
+    <div class="container">
+        <h1>Hello, world!</h1>
+        <p>This wonderful project gives you a chance to save the world </p>
+        <p><a class="btn btn-primary btn-lg">Learn more</a></p>
     </div>
 </div>
