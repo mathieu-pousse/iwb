@@ -1,0 +1,8 @@
+﻿# ignore ide  project files
+.classpath
+.project
+*.iml
+.idea
+
+# ignore generated files
+target

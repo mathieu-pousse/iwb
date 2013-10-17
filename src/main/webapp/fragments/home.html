@@ -1,0 +1,22 @@
+<div class="row" ng-controller="SearchController">
+    <div class="col-md-8 col-md-offset-2">
+        <div class=" input-group">
+            <input type="text" class="form-control" name="query" ng-model="query" prompt="search me">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">L</button>
+                    <button class="btn btn-default" type="button" ng-click="go();">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                  </span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 text-center">
+        Popular searches:
+        <populars ng-repeat="p in popular">
+            <a class="tag" href="#/products/search?q={{p}}">{{p}}</a>
+            <separator ng-="first || middle"> |</separator>
+        </populars>
+    </div>
+</div>

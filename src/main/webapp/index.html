@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="iwb">
+<head>
+    <title>iwb</title>
+
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
+    <link href="css/style.css" rel="stylesheet" media="screen"/>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+</head>
+
+<body>
+
+<div id="wrap">
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">iwb-bootstrap</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Login</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+
+    <div class="container">
+        <ng-view>
+        </ng-view>
+    </div>
+    <div id="push"></div>
+</div>
+
+<div id="footer">
+    <div class="container">
+        <div class="row">column 1</div>
+    </div>
+</div>
+</body>
+<script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.js"></script>
+<script src="js/application.js"></script>
+<script src="js/controllers.js"></script>
+<!--<script src="js/lib/angular/angular.js"></script>-->
+<!--<script src="js/lib/angular/angular-resource.min.js"></script>-->
+<!--<script src="js/lib/angular/angular-sanitize.min.js"></script>-->
+<!--<script src="js/services.js"></script>-->
+<!--<script src="js/controllers.js"></script>-->
+<!--<script src="js/filters.js"></script>-->
+<!--<script src="js/directives.js"></script>-->
+</html>
