@@ -1,0 +1,27 @@
+<my-view ng-controller="ProductController">
+    <div class="row">
+        <div class="col-md-2">
+            <img src="{{product.image}}" alt="product" class="img-thumbnail">
+        </div>
+        <div class="col-md-8">
+            <h2>{{product.name}}</h2>
+
+            <p>{{product.description}}</p>
+            <tags ng-repeat="t in product.tags">
+                <a class="tag" href="#/tags/{{t}}">{{t}}</a>
+            </tags>
+        </div>
+    </div>
+
+    <div class="row">
+        <h2>Components</h2>
+    </div>
+    <div class="row" ng-repeat="package in components">
+        <div class="col-md-2"></div>
+        <div class="col-md-3 bin" ng-repeat="component in package" ng-class="['bin-' + component.secondlife.bincolor]">
+            <p><img src="{{component.image}}" alt="component" ng-if="component.image != null"></p>
+
+            <p>{{component.name}}</p>
+        </div>
+    </div>
+</my-view>

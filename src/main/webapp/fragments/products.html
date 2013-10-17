@@ -1,0 +1,22 @@
+<view ng-controller="ProductsController">
+    <div class="row">
+        <small>
+            Found {{products.length}} products for &quot;{{query}}&quot; in our database of {{totalKnownProducts}}.
+        </small>
+    </div>
+
+    <div class="row" ng-repeat="p in products">
+        <div class="col-md-2">
+            <img src="{{p.image}}" alt="product" class="img-thumbnail">
+        </div>
+        <div class="col-md-10">
+            <h2>{{p.name}}</h2>
+
+            <p>{{p.description}} <a href="#/products/id/{{p.id}}">view</a></p>
+            <tags ng-repeat="t in p.tags">
+                <a class="tag" href="#/tags/{{t}}">{{t}}</a>
+            </tags>
+        </div>
+    </div>
+
+</view>

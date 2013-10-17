@@ -2,15 +2,19 @@
 
 /* Filters */
 
-var skillzFilters = angular.module('skillzApp.filters', ['ngSanitize']);
-skillzFilters.filter('interpolate', ['version', function(version) {
-    return function(text) {
-      return String(text).replace(/\%VERSION\%/mg, version);
-    }
-  }]);
-
-skillzFilters.filter('newlines', function() {
-    return function(text){
-        return text.replace(/\n/g, '<br/>');
-    }
+application.filter("packageBy", function () {
+    return function (input, size) {
+        if (!Array.isArray(input)) {
+            // ignore silently
+            return input;
+        }
+        var result = [];
+        for (var i = 0; i < input.length; i++) {
+            if (i % size == 0) {
+                result.push([]);
+            }
+            result[result.length - 1].push(input[i]);
+        }
+        return result;
+    };
 });

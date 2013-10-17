@@ -44,3 +44,24 @@ body {
         padding-right: 20px;
     }
 }
+
+.bin {
+    background-repeat: no-repeat;
+    background-position: right top;
+}
+
+.bin-green {
+    background-image: url("../images/bin-green.png");
+}
+
+.bin-yellow {
+    background-image: url("../images/bin-yellow.png");
+}
+
+.bin-black {
+    background-image: url("../images/bin-black.png");
+}
+
+.bin-brown {
+    background-image: url("../images/bin-brown.png");
+}
