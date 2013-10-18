@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Location {
 
-    private Long id;
+    private String id;
     private String name;
     private String description;
     private Double latitude;
@@ -29,7 +29,7 @@ public class Location {
      * @return Value of name.
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
@@ -37,7 +37,7 @@ public class Location {
      *
      * @param name New value of name.
      */
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -46,8 +46,8 @@ public class Location {
      *
      * @return Value of id.
      */
-    public Long getId() {
-        return id;
+    public String getId() {
+        return this.id;
     }
 
     /**
@@ -55,7 +55,7 @@ public class Location {
      *
      * @param id New value of id.
      */
-    public void setId(Long id) {
+    public void setId(final String id) {
         this.id = id;
     }
 
@@ -65,7 +65,7 @@ public class Location {
      * @return Value of zips.
      */
     public List<Integer> getZips() {
-        return zips;
+        return this.zips;
     }
 
     /**
@@ -73,7 +73,7 @@ public class Location {
      *
      * @param zips New value of zips.
      */
-    public void setZips(List<Integer> zips) {
+    public void setZips(final List<Integer> zips) {
         this.zips = zips;
     }
 
@@ -83,7 +83,7 @@ public class Location {
      * @return Value of description.
      */
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     /**
@@ -91,7 +91,7 @@ public class Location {
      *
      * @param description New value of description.
      */
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -101,7 +101,7 @@ public class Location {
      * @return Value of latitude.
      */
     public Double getLatitude() {
-        return latitude;
+        return this.latitude;
     }
 
     /**
@@ -110,7 +110,7 @@ public class Location {
      * @return Value of longitude.
      */
     public Double getLongitude() {
-        return longitude;
+        return this.longitude;
     }
 
     /**
@@ -118,7 +118,7 @@ public class Location {
      *
      * @param longitude New value of longitude.
      */
-    public void setLongitude(Double longitude) {
+    public void setLongitude(final Double longitude) {
         this.longitude = longitude;
     }
 
@@ -127,7 +127,7 @@ public class Location {
      *
      * @param latitude New value of latitude.
      */
-    public void setLatitude(Double latitude) {
+    public void setLatitude(final Double latitude) {
         this.latitude = latitude;
     }
 }

@@ -1,6 +1,6 @@
 package org.iwb.transport;
 
-import org.apache.commons.lang.StringUtils;
+import com.google.common.base.Strings;
 import org.iwb.business.Product;
 import org.iwb.services.ProductService;
 import org.slf4j.Logger;
@@ -24,7 +24,7 @@ public class ProductResource {
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     @ResponseBody
     public List<Product> search(@RequestParam("q") String query) {
-        if (StringUtils.isEmpty(query)) {
+        if (Strings.isNullOrEmpty(query)) {
             LOGGER.warn("no search query...");
             return Collections.emptyList();
         }

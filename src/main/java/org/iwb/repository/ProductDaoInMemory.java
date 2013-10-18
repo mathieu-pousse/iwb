@@ -1,5 +1,6 @@
 package org.iwb.repository;
 
+import org.iwb.bootstrap.ProfileInMemory;
 import org.iwb.business.Product;
 import org.iwb.business.builder.ProductBuilder;
 import org.springframework.stereotype.Repository;
@@ -17,6 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
 @Repository
+@ProfileInMemory
 public class ProductDaoInMemory implements ProductDao {
 
     private Map<Long, Product> sink = new ConcurrentHashMap<Long, Product>();

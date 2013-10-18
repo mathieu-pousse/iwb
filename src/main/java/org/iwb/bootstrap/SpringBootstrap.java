@@ -1,4 +1,4 @@
-package org.iwb;
+package org.iwb.bootstrap;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.context.annotation.Bean;
@@ -36,9 +36,13 @@ import java.util.List;
 @EnableWebMvc
 public class SpringBootstrap extends WebMvcConfigurerAdapter implements WebApplicationInitializer {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void onStartup(ServletContext container) throws ServletException {
         AnnotationConfigWebApplicationContext ioc = new AnnotationConfigWebApplicationContext();
+        ioc.getEnvironment().setActiveProfiles("in-memory");
         ioc.register(SpringBootstrap.class);
 
         ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new DispatcherServlet(ioc));
@@ -53,6 +57,9 @@ public class SpringBootstrap extends WebMvcConfigurerAdapter implements WebAppli
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         MappingJacksonHttpMessageConverter converter = new MappingJacksonHttpMessageConverter();

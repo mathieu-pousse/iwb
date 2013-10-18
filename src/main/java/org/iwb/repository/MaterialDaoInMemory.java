@@ -1,5 +1,6 @@
 package org.iwb.repository;
 
+import org.iwb.bootstrap.ProfileInMemory;
 import org.iwb.business.Material;
 import org.iwb.business.builder.MaterialBuilder;
 import org.springframework.stereotype.Repository;
@@ -16,6 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
 @Repository
+@ProfileInMemory
 public class MaterialDaoInMemory implements MaterialDao {
 
     private Map<String, Material> sink = new ConcurrentHashMap<>();

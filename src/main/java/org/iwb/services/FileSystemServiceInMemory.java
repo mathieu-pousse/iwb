@@ -1,6 +1,7 @@
 package org.iwb.services;
 
 
+import org.iwb.bootstrap.ProfileInMemory;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
@@ -15,6 +16,7 @@ import java.io.IOException;
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
 @Service
+@ProfileInMemory
 public class FileSystemServiceInMemory implements FileSystemService {
 
     @Override
