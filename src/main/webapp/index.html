@@ -14,6 +14,46 @@
 
 <body>
 
+<div class="modal fade" id="modal-localize" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close">&times;</a>
+
+                <h3>Choose your location</h3>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <p>Select in the list below the city you depend on.</p>
+
+                    <select class="form-control">
+                        <option>Agen</option>
+                        <option>Lyon</option>
+                        <option>Marseille</option>
+                        <option>Rennes</option>
+                        <option>Paris</option>
+                    </select>
+                </div>
+
+                <div class="container">
+                    <p>Or enter the zip code of the city</p>
+
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-addon"><img src="images/location.png"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-primary">I'm done</a>
+                <a href="#" class="btn btn-default" onclick="$('#modal-localize').modal('hide'); return false;"
+                   class="btn secondary">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="wrap">
     <nav class="navbar navbar-default" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -32,7 +72,7 @@
 
             <form class="navbar-form navbar-left" role="search" ng-controller="SearchController">
                 <div class="input-group" style="max-width: 600px">
-                    <input type="text" class="form-control" name="query" ng-model="query" placeholder="search">
+                    <input type="text" class="form-control" name="query" ng-model="query" placeholder="search" auto-complete ui-items="suggestions">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button" ng-click="search();">
                             <span class="glyphicon glyphicon-trash"></span>
@@ -43,7 +83,9 @@
 
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><img src="images/location.png"></a></li>
+                <li>
+                    <a data-toggle="modal" href="#modal-localize">
+                        <img src="images/location.png"></a></li>
                 <li><a href="#">Login</a></li>
             </ul>
         </div>
@@ -51,28 +93,67 @@
     </nav>
 
     <ng-view/>
-    <div id="push"></div>
+    <!--<div id="push"></div>-->
 </div>
 
-<div id="footer">
+<div class="iwb-footer">
     <div class="container">
-        <div class="row">column 1</div>
+        <div class="row">
+            <div class="col-lg-4">
+                <ul class="list-unstyled">
+                    <li><a href="#/statistics">show usage</a></li>
+                    <li><a href="#/statistics">view statistics</a></li>
+                    <li><a href="#/contribute">contribute a product</a></li>
+                    <li><a href="#/faq">frequently asked questions</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <ul class="list-unstyled">
+                    <li><a href="#/project">who we are</a></li>
+                    <li><a href="#/project">the project</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <ul class="list-unstyled">
+                    <li><a href="http//play.google.com/store">get it for <img src="images/android-icon.png" alt="android"></a></li>
+                    <li><a href="http//store.apple.com/">get it for <img src="images/iphone-icon.png" alt="android"></a></li>
+                    <li>
+                        <iframe src="http://ghbtns.com/github-btn.html?user=mathieu-pousse&repo=iwb&type=fork&count=true"
+                                allowtransparency="true" frameborder="0" scrolling="0" width="95"
+                                height="20"></iframe>
+                    </li>
+                    <li><a href="https://twitter.com/xxx" class="twitter-follow-button" data-show-count="false">Follow
+                        @iwb</a></li>
+                    <li><a href="http://www.crowndfunding.com/my-iban">fuel me</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 </body>
+<!-- bootstrap -->
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
 <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular-resource.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular-route.js"></script>
 <script src="js/application.js"></script>
 <script src="js/controllers.js"></script>
 <script src="js/filters.js"></script>
-<!--<script src="js/lib/angular/angular.js"></script>-->
-<!--<script src="js/lib/angular/angular-resource.min.js"></script>-->
-<!--<script src="js/lib/angular/angular-sanitize.min.js"></script>-->
-<!--<script src="js/services.js"></script>-->
-<!--<script src="js/controllers.js"></script>-->
-<!--<script src="js/filters.js"></script>-->
-<!--<script src="js/directives.js"></script>-->
+<script src="js/directives.js"></script>
+<script>!function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+    if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = p + '://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }
+}(document, 'script', 'twitter-wjs');</script>
 </html>

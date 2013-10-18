@@ -1,27 +1,34 @@
 <div class="container" ng-controller="ProductController">
     <div class="row">
         <div class="col-md-2">
-            <img src="{{product.image}}" alt="product" class="img-thumbnail">
+            <img src="{{product.image}}" alt="product" class="img-thumbnail" ng-if="product.image != null">
         </div>
         <div class="col-md-8">
             <h2>{{product.name}}</h2>
 
             <p>{{product.description}}</p>
             <tags ng-repeat="t in product.tags">
-                <a class="tag" href="#/tags/{{t}}">{{t}}</a>
+                <a class="badge" href="#/tags/{{t}}">{{t}}</a>
             </tags>
         </div>
     </div>
 
     <div class="row">
-        <h2>Components</h2>
+        <h2>Components ({{product.components.length}})</h2>
     </div>
     <div class="row" ng-repeat="package in components">
-        <div class="col-md-2"></div>
-        <div class="col-md-3 bin" ng-repeat="component in package" ng-class="['bin-' + component.secondlife.bincolor]">
-            <p><img src="{{component.image}}" alt="component" ng-if="component.image != null"></p>
+        <components ng-repeat="component in package">
+            <div class="col-md-3 bin components-vertical-spacer"  ng-class="['bin-' + component.secondlife.bincolor]">
+                <p><strong>Description</strong> {{component.name}}</p>
+                <p><strong>Recyclable</strong>
+                    <span class="glyphicon glyphicon-check" ng-if="component.secondlife.recyclable == true"></span>
+                    <span class="glyphicon glyphicon-remove" ng-if="component.secondlife.recyclable == false"></span>
+                </p>
+                <p><strong>Bin color</strong> {{component.secondlife.bincolor}}</p>
+                <img src="{{component.image}}" alt="product" class="img-thumbnail" ng-if="component.image != null">
+            </div>
+            <div class="col-md-1" ng-if="!$last"></div>
+        </components>
 
-            <p>{{component.name}}</p>
-        </div>
     </div>
 </div>

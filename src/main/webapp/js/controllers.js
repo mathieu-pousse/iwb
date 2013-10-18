@@ -9,6 +9,8 @@ function SearchController($scope, $location) {
 
     $scope.query = "";
 
+    $scope.suggestions = ["dechet", "delichoc", "delichoc coco", "delichoc lait", "delichoc noir", "delichoc speculos", ];
+
     $scope.search = function () {
         $location.path('/products/search').search({q: $scope.query});
     }
@@ -22,30 +24,30 @@ function ProductsController($scope, $route, $location) {
     $scope.products = [
         {"id": 10000001,
             "ean13": "",
-            "name": "delichoc",
-            "description": "voici le delichoc package !!! yip yop",
-            "image": "delichoc.png",
+            "name": "Délichoc - Chocolat au lait",
+            "description": "Chocolat au lait",
+            "image": "resources/images/delichoc-blue.jpg",
             "tags": ["food", "buiscuit", "chocolat"]
         },
         {"id": 10000002,
             "ean13": "",
-            "name": "delichoc2",
-            "description": "voic2i le delichoc package !!! yip yop",
-            "image": "d2elichoc.png",
+            "name": "Délichoc - Chocolat noir",
+            "description": "Chocolat noir",
+            "image": "resources/images/delichoc-red.jpg",
             "tags": ["food", "buiscuit", "chocolat"]
         },
         {"id": 10000003,
             "ean13": "",
-            "name": "delich3oc",
-            "description": "voici33 le delichoc package !!! yip yop",
-            "image": "delichoc.png",
+            "name": "Délichoc - Spéculos",
+            "description": "Au spéculos !!!",
+            "image": "resources/images/delichoc-speculos.jpg",
             "tags": ["food", "buiscuit", "chocolat"]
         },
         {"id": 10000004,
             "ean13": "",
-            "name": "delichoc4",
-            "description": "voici le delichoc package !!!444 yip yop",
-            "image": "delichoc.png",
+            "name": "Délichoc - Coconut party",
+            "description": "A la noix de coco",
+            "image": "resources/images/delichoc-coco.jpg",
             "tags": ["food", "buiscuit", "chocolat"]
         }
     ];
@@ -68,15 +70,15 @@ function ProductController($scope, $filter) {
 
     $scope.product = {id: 10000001,
         ean13: "",
-        name: "product",
-        description: "voici le delichoc package !!! yip yop",
-        image: "delichoc.png",
+        name: "Délichoc - Chocolat au lait",
+        description: "Chocolat au lait",
+        image: "resources/images/delichoc-blue.jpg",
         tags: ["food", "buiscuit", "chocolat"],
         components: [
             {
                 name: "emballage carton",
                 material: "cardboard",
-                image: null,
+                image: "resources/images/slim-cardboard.jpg",
                 secondlife: {
                     recyclable: true,
                     bincolor: "yellow",
@@ -96,7 +98,7 @@ function ProductController($scope, $filter) {
             {
                 name: "barquette",
                 material: "opaque-food-ready-plastic",
-                image: null,
+                image: "resources/images/opaque-food-ready-plastic.jpg",
                 secondlife: {
                     recyclable: false,
                     bincolor: "green",
@@ -106,7 +108,7 @@ function ProductController($scope, $filter) {
             {
                 name: "biscuit",
                 material: "food",
-                image: null,
+                image: "resources/images/delichoc.jpg",
                 secondlife: {
                     recyclable: false,
                     bincolor: "black",

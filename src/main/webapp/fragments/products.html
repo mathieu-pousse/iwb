@@ -5,17 +5,37 @@
         </small>
     </div>
 
-    <div class="row" ng-repeat="p in products">
-        <div class="col-md-2">
-            <img src="{{p.image}}" alt="product" class="img-thumbnail">
-        </div>
+    <div class="row">
         <div class="col-md-10">
-            <h2>{{p.name}}</h2>
+            <div class="row product-line" ng-repeat="p in products">
+                <div class="col-md-2">
+                    <img src="{{p.image}}" alt="product" class="img-thumbnail">
+                </div>
+                <div class="col-md-10">
+                    <h2>{{p.name}}</h2>
 
-            <p>{{p.description}} <a href="#/products/id/{{p.id}}">view</a></p>
-            <tags ng-repeat="t in p.tags">
-                <a class="tag" href="#/tags/{{t}}">{{t}}</a>
-            </tags>
+                    <p>{{p.description}} <a href="#/products/id/{{p.id}}">view</a></p>
+                    <tags ng-repeat="t in p.tags">
+                        <a class="badge" href="#/tags/{{t}}">{{t}}</a>
+                    </tags>
+                </div>
+            </div>
+            <div class="text-center">
+                <ul class="pagination pagination-sm">
+                    <li class="disabled"><a href="#">«</a></li>
+                    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">»</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-2 well">
+            <p>why not some facet here ?</p>
+
+            <p>or some ads to fuel the project</p>
         </div>
     </div>
 
