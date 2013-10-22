@@ -1,6 +1,7 @@
 package org.iwb.repository;
 
 import org.iwb.bootstrap.ProfileInMemory;
+import org.iwb.business.Component;
 import org.iwb.business.Product;
 import org.iwb.business.builder.ProductBuilder;
 import org.springframework.stereotype.Repository;
@@ -8,9 +9,7 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * TODO fill me.
@@ -19,13 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @Repository
 @ProfileInMemory
-public class ProductDaoInMemory implements ProductDao {
-
-    private Map<Long, Product> sink = new ConcurrentHashMap<Long, Product>();
-
-    private void push(final Product product) {
-        sink.put(product.getId(), product);
-    }
+public class ProductDaoInMemory extends GenericDaoInMemory<Product> implements ProductDao {
 
     @PostConstruct
     public void initialize() {
@@ -33,7 +26,17 @@ public class ProductDaoInMemory implements ProductDao {
         tags.add("tag-1");
         tags.add("tag-2");
         for (long i = 0; i < 1000; i++) {
-            push(ProductBuilder.aProduct().withId(i)
+            List<Component> components = new ArrayList<>();
+            for (int id = 0; id < 4; id++) {
+                Component component = new Component();
+                component.setName("name " + id);
+                component.setDescription("description " + id);
+                component.setImage("auto-generated-" + id + ".png");
+                component.setMaterialId("material-" + id);
+                components.add(component);
+            }
+
+            save(ProductBuilder.aProduct().withId(i)
                     .withDescription("description " + i)
                     .withEan13(3000000000000L + i)
                     .withName("name." + i)
@@ -75,21 +78,5 @@ public class ProductDaoInMemory implements ProductDao {
         return generated;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Product store(final Product product) {
-        sink.put(product.getId(), product);
-        return product;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Product findById(final Long id) {
-        return this.sink.get(id);
-    }
 }
 

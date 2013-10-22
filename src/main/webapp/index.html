@@ -10,14 +10,13 @@
     <link href="css/style.css" rel="stylesheet" media="screen"/>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">-->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 </head>
 
 <body>
 
 <div class="modal fade" id="modal-localize" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" ng-controller="LocationsController">
         <div class="modal-content">
             <div class="modal-header">
                 <a href="#" class="close">&times;</a>
@@ -26,22 +25,11 @@
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <p>Select in the list below the city you depend on.</p>
-
-                    <select class="form-control">
-                        <option>Agen</option>
-                        <option>Lyon</option>
-                        <option>Marseille</option>
-                        <option>Rennes</option>
-                        <option>Paris</option>
-                    </select>
-                </div>
-
-                <div class="container">
-                    <p>Or enter the zip code of the city</p>
+                    <p>Search for a location:</p>
 
                     <div class="input-group">
-                        <input type="text" class="form-control">
+                        <!--<input type="text" class="form-control" ng-model="query" ng-change="search()" placeholder="search" auto-complete ui-items="candidates">-->
+                        <input type="text" class="form-control" ng-model="query" ng-change="search()" placeholder="search">
                         <span class="input-group-addon"><img src="images/location.png"></span>
                     </div>
                 </div>
@@ -73,7 +61,7 @@
 
             <form class="navbar-form navbar-left" role="search" ng-controller="SearchController">
                 <div class="input-group" style="max-width: 600px">
-                    <input type="text" class="form-control" name="query" ng-model="query" placeholder="search" auto-complete ui-items="suggestions">
+                    <input type="text" class="form-control" name="query" ng-model="query" placeholder="search">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button" ng-click="search();">
                             <span class="glyphicon glyphicon-trash"></span>
@@ -100,21 +88,23 @@
 <div class="iwb-footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-2">
                 <ul class="list-unstyled">
-                    <li><a href="#/statistics">show usage</a></li>
-                    <li><a href="#/statistics">view statistics</a></li>
-                    <li><a href="#/contribute">contribute a product</a></li>
+                    <li><a href="#/project">the project</a></li>
+                    <li><a href="#/statistics">statistics</a></li>
+                    <li><a href="#/contribute">contribute</a></li>
                     <li><a href="#/faq">frequently asked questions</a></li>
                 </ul>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-2">
                 <ul class="list-unstyled">
-                    <li><a href="#/project">who we are</a></li>
-                    <li><a href="#/project">the project</a></li>
+                    <li><a href="#/contribute/locations">locations</a></li>
+                    <li><a href="#/contribute/products">products</a></li>
+                    <li><a href="#/contribute/materials">materials</a></li>
+                    <li><a href="#/contribute/second-life">second life</a></li>
                 </ul>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-2">
                 <ul class="list-unstyled">
                     <li><a href="http//play.google.com/store">get it for <img src="images/android-icon.png" alt="android"></a></li>
                     <li><a href="http//store.apple.com/">get it for <img src="images/iphone-icon.png" alt="android"></a></li>
@@ -135,12 +125,12 @@
 
 <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular-resource.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular-route.js"></script>
 <script src="js/application.js"></script>
 <script src="js/controllers.js"></script>
+<script src="js/services.js"></script>
 <script src="js/filters.js"></script>
 <script src="js/directives.js"></script>
 <script>!function (d, s, id) {

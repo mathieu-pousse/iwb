@@ -7,14 +7,15 @@ import java.util.List;
  *
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
-public class Location {
+public class Location extends AbstractIDGeneratedEntity {
 
-    private String id;
     private String name;
     private String description;
     private Double latitude;
     private Double longitude;
     private List<Integer> zips;
+
+    private List<Trash> trashes;
 
     /**
      * Default constructor.
@@ -39,24 +40,6 @@ public class Location {
      */
     public void setName(final String name) {
         this.name = name;
-    }
-
-    /**
-     * Gets id.
-     *
-     * @return Value of id.
-     */
-    public String getId() {
-        return this.id;
-    }
-
-    /**
-     * Sets new id.
-     *
-     * @param id New value of id.
-     */
-    public void setId(final String id) {
-        this.id = id;
     }
 
     /**
@@ -105,6 +88,15 @@ public class Location {
     }
 
     /**
+     * Sets new latitude.
+     *
+     * @param latitude New value of latitude.
+     */
+    public void setLatitude(final Double latitude) {
+        this.latitude = latitude;
+    }
+
+    /**
      * Gets longitude.
      *
      * @return Value of longitude.
@@ -122,12 +114,22 @@ public class Location {
         this.longitude = longitude;
     }
 
+
     /**
-     * Sets new latitude.
+     * Gets trashes.
      *
-     * @param latitude New value of latitude.
+     * @return Value of trashes.
      */
-    public void setLatitude(final Double latitude) {
-        this.latitude = latitude;
+    public List<Trash> getTrashes() {
+        return trashes;
+    }
+
+    /**
+     * Sets new trashes.
+     *
+     * @param trashes New value of trashes.
+     */
+    public void setTrashes(List<Trash> trashes) {
+        this.trashes = trashes;
     }
 }

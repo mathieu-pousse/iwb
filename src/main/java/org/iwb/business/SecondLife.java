@@ -5,16 +5,15 @@ package org.iwb.business;
  *
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
-public class MaterialSecondLife {
+public class SecondLife extends AbstractIDGeneratedEntity {
 
-    private Long id;
     private String material;
     private String bin;
 
     /**
      * Default constructor.
      */
-    public MaterialSecondLife() {
+    public SecondLife() {
         // void
     }
 
@@ -34,24 +33,6 @@ public class MaterialSecondLife {
      */
     public void setBin(String bin) {
         this.bin = bin;
-    }
-
-    /**
-     * Gets id.
-     *
-     * @return Value of id.
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * Sets new id.
-     *
-     * @param id New value of id.
-     */
-    public void setId(Long id) {
-        this.id = id;
     }
 
     /**

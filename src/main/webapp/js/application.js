@@ -1,7 +1,7 @@
 "use strict";
 
 // Declare app level module which depends on filters, and services
-var application = angular.module("iwb", ["ngRoute"]);
+var application = angular.module("iwb", ["ngRoute", "ngResource"]);
 
 application.config(["$routeProvider", function($routeProvider) {
     $routeProvider.when("/home", {templateUrl: "fragments/home.html"});

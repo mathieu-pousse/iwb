@@ -1,6 +1,6 @@
 package org.iwb.transport;
 
-import org.iwb.business.MaterialSecondLife;
+import org.iwb.business.SecondLife;
 import org.iwb.business.User;
 import org.iwb.services.MaterialSecondLifeService;
 import org.slf4j.Logger;
@@ -28,7 +28,7 @@ public class MaterialSecondLifeResource {
     private MaterialSecondLifeService service;
 
     @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
-    public MaterialSecondLife findById(HttpSession session, @PathVariable("id") String id) {
+    public SecondLife findById(HttpSession session, @PathVariable("id") String id) {
         User current = (User) session.getAttribute("user");
         return this.service.findById(current.getLocation(), id);
     }

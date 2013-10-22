@@ -27,7 +27,7 @@ public class LocationResource {
         return this.service.findAll();
     }
 
-    @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Location findById(@PathVariable("id") String id) {
         return this.service.findById(id);

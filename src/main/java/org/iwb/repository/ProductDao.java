@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
-public interface ProductDao {
+public interface ProductDao extends GenericDao<Product> {
 
     /**
      * Returns the latest products.
@@ -18,9 +18,12 @@ public interface ProductDao {
      */
     List<Product> latest(Integer startAt, Integer limit);
 
+    /**
+     * Search for a product.
+     *
+     * @param query the query
+     * @return See description.
+     */
     List<Product> search(String query);
 
-    Product store(Product product);
-
-    Product findById(Long id);
 }

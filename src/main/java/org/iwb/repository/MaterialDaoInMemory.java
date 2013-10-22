@@ -6,10 +6,6 @@ import org.iwb.business.builder.MaterialBuilder;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * TODO fill me.
@@ -18,40 +14,27 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @Repository
 @ProfileInMemory
-public class MaterialDaoInMemory implements MaterialDao {
+public class MaterialDaoInMemory extends GenericDaoInMemory<Material> implements MaterialDao {
 
-    private Map<String, Material> sink = new ConcurrentHashMap<>();
-
-    private Material push(Material m) {
-        this.sink.put(m.getId(), m);
-        return m;
-    }
 
     /**
      * Initialize with fake data.
      */
     @PostConstruct
     public void initialize() {
-        push(MaterialBuilder.aMaterial().withId("1").withName("Emballage carton").build());
-        push(MaterialBuilder.aMaterial().withId("2").withName("Barquette plastique").build());
-        push(MaterialBuilder.aMaterial().withId("3").withName("Film plastique").build());
-        push(MaterialBuilder.aMaterial().withId("4").withName("Nouriture").build());
+        save(MaterialBuilder.aMaterial().withId("material-0").withName("default").build());
+        save(MaterialBuilder.aMaterial().withId("material-1").withName("Emballage carton").build());
+        save(MaterialBuilder.aMaterial().withId("material-2").withName("Barquette plastique").build());
+        save(MaterialBuilder.aMaterial().withId("material-3").withName("Film plastique").build());
+        save(MaterialBuilder.aMaterial().withId("material-4").withName("Nourriture 4").build());
+        save(MaterialBuilder.aMaterial().withId("material-5").withName("Nourriture 5").build());
+        save(MaterialBuilder.aMaterial().withId("material-6").withName("Nourriture 6").build());
+        save(MaterialBuilder.aMaterial().withId("material-7").withName("Nourriture 7").build());
+        save(MaterialBuilder.aMaterial().withId("material-8").withName("Nourriture 8").build());
+        save(MaterialBuilder.aMaterial().withId("material-9").withName("Nourriture 9").build());
+        save(MaterialBuilder.aMaterial().withId("material-10").withName("Nourriture 10").build());
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<Material> findAll() {
-        return new ArrayList<>(this.sink.values());
-    }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Material findById(String id) {
-        return this.sink.get(id);
-    }
 }
 

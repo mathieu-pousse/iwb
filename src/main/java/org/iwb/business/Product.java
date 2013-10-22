@@ -5,48 +5,20 @@ import java.util.List;
 /**
  * Represents a product.
  */
-public class Product {
+public class Product extends AbstractIDGeneratedEntity {
 
-    private Long id;
     private Long ean13;
     private String name;
     private String description;
-    private String pathToPicture;
+    private String image;
     private List<String> tags;
+    private List<Component> components;
 
     /**
      * Default constructor.
      */
     public Product() {
         // void
-    }
-
-
-    /**
-     * Sets new id.
-     *
-     * @param id New value of id.
-     */
-    public void setId(final Long id) {
-        this.id = id;
-    }
-
-    /**
-     * Gets pathToPicture.
-     *
-     * @return Value of pathToPicture.
-     */
-    public String getPathToPicture() {
-        return this.pathToPicture;
-    }
-
-    /**
-     * Gets id.
-     *
-     * @return Value of id.
-     */
-    public Long getId() {
-        return this.id;
     }
 
     /**
@@ -59,12 +31,12 @@ public class Product {
     }
 
     /**
-     * Sets new tags.
+     * Sets new description.
      *
-     * @param tags New value of tags.
+     * @param description New value of description.
      */
-    public void setTags(final List<String> tags) {
-        this.tags = tags;
+    public void setDescription(final String description) {
+        this.description = description;
     }
 
     /**
@@ -77,30 +49,21 @@ public class Product {
     }
 
     /**
+     * Sets new tags.
+     *
+     * @param tags New value of tags.
+     */
+    public void setTags(final List<String> tags) {
+        this.tags = tags;
+    }
+
+    /**
      * Gets name.
      *
      * @return Value of name.
      */
     public String getName() {
         return this.name;
-    }
-
-    /**
-     * Sets new ean13.
-     *
-     * @param ean13 New value of ean13.
-     */
-    public void setEan13(final Long ean13) {
-        this.ean13 = ean13;
-    }
-
-    /**
-     * Sets new description.
-     *
-     * @param description New value of description.
-     */
-    public void setDescription(final String description) {
-        this.description = description;
     }
 
     /**
@@ -122,11 +85,47 @@ public class Product {
     }
 
     /**
-     * Sets new pathToPicture.
+     * Sets new ean13.
      *
-     * @param pathToPicture New value of pathToPicture.
+     * @param ean13 New value of ean13.
      */
-    public void setPathToPicture(final String pathToPicture) {
-        this.pathToPicture = pathToPicture;
+    public void setEan13(final Long ean13) {
+        this.ean13 = ean13;
+    }
+
+    /**
+     * Gets components.
+     *
+     * @return Value of components.
+     */
+    public List<Component> getComponents() {
+        return this.components;
+    }
+
+    /**
+     * Sets new components.
+     *
+     * @param components New value of components.
+     */
+    public void setComponents(final List<Component> components) {
+        this.components = components;
+    }
+
+    /**
+     * Gets image.
+     *
+     * @return Value of image.
+     */
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * Sets new image.
+     *
+     * @param image New value of image.
+     */
+    public void setImage(String image) {
+        this.image = image;
     }
 }

@@ -25,4 +25,10 @@ public interface MaterialDao {
      * @return See description.
      */
     Material findById(String id);
+
+    Material save(Material material);
+
+    Material update(Material material);
+
+    boolean delete(String materialId);
 }

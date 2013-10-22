@@ -2,20 +2,15 @@ package org.iwb.repository;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.hash.Hashing;
-import javafx.geometry.Pos;
-import org.apache.commons.io.HexDump;
-import org.codehaus.jackson.map.ser.std.IterableSerializer;
 import org.iwb.bootstrap.ProfileInMemory;
 import org.iwb.business.Location;
+import org.iwb.business.Trash;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
-import java.nio.charset.Charset;
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * In memory implementation of the LocationDao.
@@ -24,16 +19,19 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @Repository
 @ProfileInMemory
-public class LocationDaoInMemory implements LocationDao {
-
-    private Map<String, Location> inMemory = new ConcurrentHashMap<>();
+public class LocationDaoInMemory extends GenericDaoInMemory<Location> implements LocationDao {
 
     /**
      * Initialize the memory with some values.
      */
     @PostConstruct
     public void initialize() {
-        push("Rennes", "Rennes Metropole", 35000, 35100);
+        Location rennes = push("Rennes", "Rennes Metropole", 35000, 35100);
+        Trash yellow = new Trash();
+        yellow.setColor("yellow");
+        yellow.setDescription("save a bit the planet");
+        rennes.getTrashes().add(yellow);
+
         push("Paris", "Paris et la courrone", 75000, 77000, 78000, 92000);
         push("Reims", "Reims Metropole", 51000);
         push("Marseille", "Marseille agglomeration", 13000);
@@ -47,30 +45,19 @@ public class LocationDaoInMemory implements LocationDao {
      * @param name        the name
      * @param description the description
      * @param zips        the zip code
+     * @return the saved location
      */
-    private void push(String name, String description, Integer... zips) {
+    private Location push(String name, String description, Integer... zips) {
         Location location = new Location();
-        location.setId(Long.valueOf(Hashing.sha1().hashString(name, Charset.defaultCharset()).asLong()).toString());
         location.setName(name);
         location.setDescription(description);
         location.setZips(Arrays.asList(zips));
-        inMemory.put(location.getId(), location);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<Location> findAll() {
-        return new ArrayList(this.inMemory.values());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Location findById(String id) {
-        return this.inMemory.get(id);
+        Trash everything = new Trash();
+        everything.setColor("black");
+        everything.setDescription("everything can goes here but...");
+        everything.setImage("black.png");
+        location.setTrashes(Arrays.asList(everything));
+        return save(location);
     }
 
     /**
@@ -78,7 +65,7 @@ public class LocationDaoInMemory implements LocationDao {
      */
     @Override
     public List<Location> findByZipCode(final Integer zip) {
-        return new ArrayList<>(Collections2.filter(inMemory.values(), new Predicate<Location>() {
+        return new ArrayList<>(Collections2.filter(findAll(), new Predicate<Location>() {
             @Override
             public boolean apply(Location location) {
                 return location != null && location.getZips().contains(zip);
@@ -92,7 +79,7 @@ public class LocationDaoInMemory implements LocationDao {
     @Override
     public List<Location> search(String query) {
         final String[] tokens = query.split(" ");
-        return new ArrayList<>(Collections2.filter(inMemory.values(), new Predicate<Location>() {
+        return new ArrayList<>(Collections2.filter(findAll(), new Predicate<Location>() {
             @Override
             public boolean apply(Location location) {
                 if (location == null) {

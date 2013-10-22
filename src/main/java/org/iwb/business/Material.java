@@ -5,9 +5,8 @@ package org.iwb.business;
  *
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
-public class Material {
+public class Material extends AbstractIDGeneratedEntity {
 
-    private String id;
     private String name;
     private String description;
 
@@ -16,24 +15,6 @@ public class Material {
      */
     public Material() {
         // void
-    }
-
-    /**
-     * Gets id.
-     *
-     * @return Value of id.
-     */
-    public String getId() {
-        return this.id;
-    }
-
-    /**
-     * Sets new id.
-     *
-     * @param id New value of id.
-     */
-    public void setId(final String id) {
-        this.id = id;
     }
 
     /**

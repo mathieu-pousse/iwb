@@ -1,7 +1,7 @@
 package org.iwb.services;
 
 import org.iwb.business.Component;
-import org.iwb.business.MaterialSecondLife;
+import org.iwb.business.SecondLife;
 
 import java.util.List;
 import java.util.Map;
@@ -14,6 +14,6 @@ import java.util.Map;
 public interface SolutionService {
 
 
-    Map<Component, MaterialSecondLife> resolve(List<Component> components);
+    Map<Component, SecondLife> resolve(List<Component> components);
 
 }

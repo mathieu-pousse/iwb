@@ -1,8 +1,7 @@
 package org.iwb.services;
 
 import org.iwb.business.Location;
-import org.iwb.business.Material;
-import org.iwb.business.MaterialSecondLife;
+import org.iwb.business.SecondLife;
 
 import java.util.List;
 
@@ -13,7 +12,7 @@ import java.util.List;
  */
 public interface MaterialSecondLifeService {
 
-    List<MaterialSecondLife> findAll(Location location);
+    List<SecondLife> findAll(Location location);
 
-    MaterialSecondLife findById(String location, String id);
+    SecondLife findById(String location, String id);
 }

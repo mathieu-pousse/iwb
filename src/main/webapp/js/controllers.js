@@ -9,11 +9,28 @@ function SearchController($scope, $location) {
 
     $scope.query = "";
 
-    $scope.suggestions = ["dechet", "delichoc", "delichoc coco", "delichoc lait", "delichoc noir", "delichoc speculos", ];
+    $scope.suggestions = ["dechet", "delichoc", "delichoc coco", "delichoc lait", "delichoc noir", "delichoc speculos"];
 
     $scope.search = function () {
         $location.path('/products/search').search({q: $scope.query});
     }
+}
+
+
+LocationsController.$inject = ["$scope", "LocationsResource"];
+function LocationsController($scope, LocationsResource) {
+    $scope.search = function () {
+        $scope.candidates = LocationsResource.search({q: $scope.query}, function () {
+            var ready = [];
+            for (var i = 0; i < $scope.candidates.length; i++) {
+                ready.push($scope.candidates[i].name);
+            }
+            console.log("candidates are " + $scope.candidates);
+            return function() {
+                return ready;
+            }
+        });
+    };
 }
 
 /* Products list fragment */

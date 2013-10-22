@@ -9,22 +9,7 @@ import java.util.List;
  *
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
-public interface LocationDao {
-
-    /**
-     * Returns all the locations.
-     *
-     * @return See description.
-     */
-    List<Location> findAll();
-
-    /**
-     * Return the specified location or null if not found.
-     *
-     * @param id the locations id
-     * @return See description.
-     */
-    Location findById(String id);
+public interface LocationDao extends GenericDao<Location> {
 
     /**
      * Returns the list of location matching the zip code.

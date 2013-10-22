@@ -1,10 +1,15 @@
 "use strict";
 
-var services = angular.module("iwb.services", ["ngResource"]);
-services.value("version", "0.1");
+var __SERVICE_BASE_URL = "/services/";
 
-services.factory("ProductsResource", function ($resource) {
-    return $resource("services/products/search?q=:query", {}, {
-        search: {method: "GET"}
+application.factory("LocationsResource", function ($resource) {
+    var baseUrl = __SERVICE_BASE_URL + "locations/:locationId";
+    return $resource(baseUrl, {}, {
+        findAll: {method: "GET", params: {locationId: ""}, isArray: true},
+        query: {method: "GET"},
+        save: {method: "POST"},
+        update: {method: "PUT", params: {locationId: "@id"}},
+        remove: {method: "DELETE", params: {locationId: "@id"}},
+        search: {method: "GET", params: {locationId: "search"}, isArray: true}
     });
 });

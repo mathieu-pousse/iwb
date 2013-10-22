@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>{{location.name}}</h2>
+
+            <p>{{location.description}}</p>
+
+            <span ng-repeat="zip in zips">{{zip}}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <h2>Components ({{product.components.length}})</h2>
+    </div>
+    <div class="row" ng-repeat="package in components">
+        <components ng-repeat="component in package">
+            <div class="col-md-3 bin components-vertical-spacer"  ng-class="['bin-' + component.secondlife.bincolor]">
+                <p><strong>Description</strong> {{component.name}}</p>
+                <p><strong>Recyclable</strong>
+                    <span class="glyphicon glyphicon-check" ng-if="component.secondlife.recyclable == true"></span>
+                    <span class="glyphicon glyphicon-remove" ng-if="component.secondlife.recyclable == false"></span>
+                </p>
+                <p><strong>Bin color</strong> {{component.secondlife.bincolor}}</p>
+                <img src="{{component.image}}" alt="product" class="img-thumbnail" ng-if="component.image != null">
+            </div>
+            <div class="col-md-1" ng-if="!$last"></div>
+        </components>
+
+    </div>
+
+</div>
