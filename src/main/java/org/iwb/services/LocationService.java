@@ -9,14 +9,8 @@ import java.util.List;
  *
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
-public interface LocationService {
+public interface LocationService extends GenericService<Location> {
 
-    /**
-     * Returns all the locations.
-     *
-     * @return See description.
-     */
-    List<Location> findAll();
 
     /**
      * Returns the list of location matching the specified gps coordinate.
@@ -34,14 +28,6 @@ public interface LocationService {
      * @return See description.
      */
     List<Location> localize(Integer zip);
-
-    /**
-     * Returns the specified location.
-     *
-     * @param id the location id
-     * @return See description.
-     */
-    Location findById(String id);
 
     /**
      * Search the location with the specified query.

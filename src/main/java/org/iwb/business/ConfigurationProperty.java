@@ -7,6 +7,13 @@ package org.iwb.business;
  */
 public interface ConfigurationProperty {
 
+    /**
+     * {@link Enum#name()}.
+     *
+     * @return see description
+     */
+    String name();
+
     String getKey();
 
     Object getDefaultValue();

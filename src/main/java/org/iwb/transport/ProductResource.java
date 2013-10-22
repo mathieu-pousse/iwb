@@ -28,15 +28,31 @@ public class ProductResource {
             LOGGER.warn("no search query...");
             return Collections.emptyList();
         }
-        LOGGER.debug("search for products w/ query '{}'", query);
         return this.service.search(query);
     }
 
-    @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Product id(@PathVariable("id") Long id) {
-        LOGGER.debug("FETCHING product w/ id '{}'", id);
+    public Product id(@PathVariable("id") String id) {
         return this.service.findById(id);
+    }
+
+    @RequestMapping(value = "/{id}/details", method = RequestMethod.GET)
+    @ResponseBody
+    public Product details(@PathVariable("id") String id) {
+        Product product = this.service.findById(id);
+        if (product == null) {
+            return null;
+        }
+        
+
+        return product;
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Product> findAll() {
+        return this.service.findAll();
     }
 
 

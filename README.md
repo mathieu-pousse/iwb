@@ -33,3 +33,29 @@ iwb-bootstrap
 
 /images/id/{id}
  - manages the specified image
+
+
+product.id
+product.name
+product.components *
+
+component.name
+component.material
+
+material.id
+material.name
+material.description
+material.information
+
+location.id
+location.name
+location.zips
+location.coordinate
+location.trashes
+
+trash.color
+trash.information
+
+second-life.materialId
+second-life.locationId
+second-life.trash

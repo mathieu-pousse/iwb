@@ -9,10 +9,7 @@ import java.util.List;
  *
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
-public interface MaterialService {
+public interface MaterialService extends GenericService<Material> {
 
-    List<Material> findAll();
-
-    Material findById(String id);
 
 }

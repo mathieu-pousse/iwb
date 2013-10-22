@@ -7,8 +7,9 @@ package org.iwb.business;
  */
 public class SecondLife extends AbstractIDGeneratedEntity {
 
-    private String material;
-    private String bin;
+    private String locationId;
+    private String materialId;
+    private String trash;
 
     /**
      * Default constructor.
@@ -17,39 +18,27 @@ public class SecondLife extends AbstractIDGeneratedEntity {
         // void
     }
 
-    /**
-     * Gets bin.
-     *
-     * @return Value of bin.
-     */
-    public String getBin() {
-        return bin;
+    public String getLocationId() {
+        return locationId;
     }
 
-    /**
-     * Sets new bin.
-     *
-     * @param bin New value of bin.
-     */
-    public void setBin(String bin) {
-        this.bin = bin;
+    public void setLocationId(String locationId) {
+        this.locationId = locationId;
     }
 
-    /**
-     * Gets material.
-     *
-     * @return Value of material.
-     */
-    public String getMaterial() {
-        return material;
+    public String getMaterialId() {
+        return materialId;
     }
 
-    /**
-     * Sets new material.
-     *
-     * @param material New value of material.
-     */
-    public void setMaterial(String material) {
-        this.material = material;
+    public void setMaterialId(String materialId) {
+        this.materialId = materialId;
+    }
+
+    public String getTrash() {
+        return trash;
+    }
+
+    public void setTrash(String trash) {
+        this.trash = trash;
     }
 }

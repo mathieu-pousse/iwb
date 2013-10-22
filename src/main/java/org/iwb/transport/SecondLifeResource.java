@@ -1,7 +1,7 @@
 package org.iwb.transport;
 
-import org.iwb.business.Material;
-import org.iwb.services.MaterialService;
+import org.iwb.business.SecondLife;
+import org.iwb.services.SecondLifeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,32 +11,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
-
 /**
  * TODO fill me.
  *
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
 @Controller
-@RequestMapping(value = "/materials")
-public class MaterialResource {
+@RequestMapping(value = "/second-life")
+public class SecondLifeResource {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MaterialResource.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SecondLifeResource.class);
 
     @Autowired
-    private MaterialService service;
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Material> findAll() {
-        return this.service.findAll();
-    }
+    private SecondLifeService secondLifeService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Material findById(@PathVariable("id") String id) {
-        return this.service.findById(id);
+    public SecondLife findById(@PathVariable("id") String id) {
+        return this.secondLifeService.findById(id);
     }
 
 }

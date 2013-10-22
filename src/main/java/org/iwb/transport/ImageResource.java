@@ -27,7 +27,7 @@ public class ImageResource {
     @Autowired
     private FileSystemService service;
 
-    @RequestMapping(value = "/id/{id}", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
     public ResponseEntity<byte[]> load(@PathVariable("id") String id) {
         LOGGER.debug("loading images/{}", id);
         try {

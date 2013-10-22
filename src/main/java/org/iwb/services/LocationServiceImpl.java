@@ -22,6 +22,30 @@ public class LocationServiceImpl implements LocationService {
      * {@inheritDoc}
      */
     @Override
+    public Location save(Location toSave) {
+        return this.dao.save(toSave);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Location update(Location toUpdate) {
+        return this.dao.update(toUpdate);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean delete(String entityId) {
+        return this.dao.delete(entityId);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public List<Location> findAll() {
         return this.dao.findAll();
     }

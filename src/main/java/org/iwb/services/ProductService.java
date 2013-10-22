@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
-public interface ProductService {
+public interface ProductService extends GenericService<Product> {
 
     List<Product> latest();
 
@@ -21,5 +21,4 @@ public interface ProductService {
      */
     List<Product> search(String query);
 
-    Product findById(Long id);
 }

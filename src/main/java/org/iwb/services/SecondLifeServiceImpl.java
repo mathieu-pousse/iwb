@@ -1,7 +1,7 @@
 package org.iwb.services;
 
-import org.iwb.business.Material;
-import org.iwb.repository.MaterialDao;
+import org.iwb.business.SecondLife;
+import org.iwb.repository.SecondLifeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,16 +13,16 @@ import java.util.List;
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
 @Service
-public class MaterialServiceImpl implements MaterialService {
+public class SecondLifeServiceImpl implements SecondLifeService {
 
     @Autowired
-    private MaterialDao dao;
+    private SecondLifeDao dao;
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public Material save(Material toSave) {
+    public SecondLife save(SecondLife toSave) {
         return this.dao.save(toSave);
     }
 
@@ -30,7 +30,7 @@ public class MaterialServiceImpl implements MaterialService {
      * {@inheritDoc}
      */
     @Override
-    public Material update(Material toUpdate) {
+    public SecondLife update(SecondLife toUpdate) {
         return this.dao.update(toUpdate);
     }
 
@@ -46,7 +46,7 @@ public class MaterialServiceImpl implements MaterialService {
      * {@inheritDoc}
      */
     @Override
-    public List<Material> findAll() {
+    public List<SecondLife> findAll() {
         return this.dao.findAll();
     }
 
@@ -54,7 +54,7 @@ public class MaterialServiceImpl implements MaterialService {
      * {@inheritDoc}
      */
     @Override
-    public Material findById(String id) {
+    public SecondLife findById(String id) {
         return this.dao.findById(id);
     }
 }
