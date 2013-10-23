@@ -38,6 +38,7 @@ public class GenericDaoInMemory<E extends AbstractEntityWithId> implements Gener
     public GenericDaoInMemory() {
         Class<?> implementation = (Class<?>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         this.type = implementation.getSimpleName();
+        LOGGER.debug("initializing generic dao for {}", this.type);
     }
 
     /**
@@ -64,6 +65,9 @@ public class GenericDaoInMemory<E extends AbstractEntityWithId> implements Gener
      */
     @Override
     public E save(final E entity) {
+        if (entity == null) {
+            return null;
+        }
         if (entity.getId() != null) {
             // means update...
             return this.update(entity);
@@ -83,6 +87,9 @@ public class GenericDaoInMemory<E extends AbstractEntityWithId> implements Gener
      */
     @Override
     public E update(final E entity) {
+        if (entity == null) {
+            return null;
+        }
         if (entity.getId() == null) {
             return this.save(entity);
         }
@@ -96,6 +103,9 @@ public class GenericDaoInMemory<E extends AbstractEntityWithId> implements Gener
      */
     @Override
     public boolean delete(final String entityId) {
+        if (entityId == null) {
+            return false;
+        }
         boolean deleted = this.sink.remove(entityId) != null;
         LOGGER.info("deleting {} with id {} and return {}", this.type, entityId, deleted);
         return deleted;
