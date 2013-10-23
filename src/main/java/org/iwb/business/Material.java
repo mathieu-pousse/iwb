@@ -5,7 +5,7 @@ package org.iwb.business;
  *
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
-public class Material extends AbstractIDGeneratedEntity {
+public class Material extends AbstractEntityWithId {
 
     private String name;
     private String description;

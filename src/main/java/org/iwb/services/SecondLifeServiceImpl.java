@@ -22,7 +22,7 @@ public class SecondLifeServiceImpl implements SecondLifeService {
      * {@inheritDoc}
      */
     @Override
-    public SecondLife save(SecondLife toSave) {
+    public SecondLife save(final SecondLife toSave) {
         return this.dao.save(toSave);
     }
 
@@ -30,7 +30,7 @@ public class SecondLifeServiceImpl implements SecondLifeService {
      * {@inheritDoc}
      */
     @Override
-    public SecondLife update(SecondLife toUpdate) {
+    public SecondLife update(final SecondLife toUpdate) {
         return this.dao.update(toUpdate);
     }
 
@@ -38,7 +38,7 @@ public class SecondLifeServiceImpl implements SecondLifeService {
      * {@inheritDoc}
      */
     @Override
-    public boolean delete(String entityId) {
+    public boolean delete(final String entityId) {
         return this.dao.delete(entityId);
     }
 
@@ -54,7 +54,31 @@ public class SecondLifeServiceImpl implements SecondLifeService {
      * {@inheritDoc}
      */
     @Override
-    public SecondLife findById(String id) {
+    public SecondLife findById(final String id) {
         return this.dao.findById(id);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<SecondLife> findByMaterialId(final String materialId) {
+        return this.dao.findByMaterialId(materialId);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<SecondLife> findByLocationId(final String locationId) {
+        return this.dao.findByLocationId(locationId);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<SecondLife> findByMaterialAndLocationId(final String materialId, final String locationId) {
+        return this.dao.findByMaterialAndLocationId(materialId, locationId);
     }
 }

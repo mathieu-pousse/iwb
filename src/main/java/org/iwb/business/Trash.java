@@ -5,7 +5,7 @@ package org.iwb.business;
  *
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
-public class Trash extends AbstractIDGeneratedEntity {
+public class Trash extends AbstractEntityWithId {
 
     private String color;
     private String image;
@@ -24,7 +24,7 @@ public class Trash extends AbstractIDGeneratedEntity {
      * @return Value of image.
      */
     public String getImage() {
-        return image;
+        return this.image;
     }
 
     /**
@@ -32,7 +32,7 @@ public class Trash extends AbstractIDGeneratedEntity {
      *
      * @param image New value of image.
      */
-    public void setImage(String image) {
+    public void setImage(final String image) {
         this.image = image;
     }
 
@@ -42,7 +42,7 @@ public class Trash extends AbstractIDGeneratedEntity {
      * @return Value of description.
      */
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     /**
@@ -50,7 +50,7 @@ public class Trash extends AbstractIDGeneratedEntity {
      *
      * @param description New value of description.
      */
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -60,7 +60,7 @@ public class Trash extends AbstractIDGeneratedEntity {
      * @return Value of color.
      */
     public String getColor() {
-        return color;
+        return this.color;
     }
 
     /**
@@ -68,7 +68,7 @@ public class Trash extends AbstractIDGeneratedEntity {
      *
      * @param color New value of color.
      */
-    public void setColor(String color) {
+    public void setColor(final String color) {
         this.color = color;
     }
 }

@@ -1,6 +1,6 @@
 package org.iwb.repository;
 
-import org.iwb.business.AbstractIDGeneratedEntity;
+import org.iwb.business.AbstractEntityWithId;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
-public interface GenericDao<E extends AbstractIDGeneratedEntity> {
+public interface GenericDao<E extends AbstractEntityWithId> {
 
     List<E> findAll();
 

@@ -2,14 +2,11 @@ package org.iwb.repository;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
+import com.google.common.collect.Lists;
 import org.iwb.bootstrap.ProfileInMemory;
 import org.iwb.business.Location;
-import org.iwb.business.Trash;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -26,9 +23,9 @@ public class LocationDaoInMemory extends GenericDaoInMemory<Location> implements
      */
     @Override
     public List<Location> findByZipCode(final Integer zip) {
-        return new ArrayList<>(Collections2.filter(findAll(), new Predicate<Location>() {
+        return Lists.newArrayList(Collections2.filter(findAll(), new Predicate<Location>() {
             @Override
-            public boolean apply(Location location) {
+            public boolean apply(final Location location) {
                 return location != null && location.getZips().contains(zip);
             }
         }));
@@ -38,15 +35,15 @@ public class LocationDaoInMemory extends GenericDaoInMemory<Location> implements
      * {@inheritDoc}
      */
     @Override
-    public List<Location> search(String query) {
+    public List<Location> search(final String query) {
         final String[] tokens = query.toLowerCase().split(" ");
-        return new ArrayList<>(Collections2.filter(findAll(), new Predicate<Location>() {
+        return Lists.newArrayList(Collections2.filter(findAll(), new Predicate<Location>() {
             @Override
-            public boolean apply(Location location) {
+            public boolean apply(final Location location) {
                 if (location == null) {
                     return false;
                 }
-                for (String token : tokens) {
+                for (final String token : tokens) {
                     try {
                         Integer asZipCode = Integer.parseInt(token);
                         if (location.getZips().contains(asZipCode)) {
@@ -55,8 +52,10 @@ public class LocationDaoInMemory extends GenericDaoInMemory<Location> implements
                     } catch (NumberFormatException nfe) {
                         // ok...
                     }
-                    return location.getName().toLowerCase().contains(token) || //
-                            location.getDescription().toLowerCase().contains(token);
+                    if (location.getName().toLowerCase().contains(token) || //
+                            location.getDescription().toLowerCase().contains(token)) {
+                        return true;
+                    }
                 }
                 return false;
             }

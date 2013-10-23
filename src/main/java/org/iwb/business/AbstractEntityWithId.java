@@ -7,7 +7,7 @@ import java.io.Serializable;
  *
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
-public abstract class AbstractIDGeneratedEntity implements Serializable {
+public abstract class AbstractEntityWithId implements Serializable {
 
     private String id;
 
@@ -17,7 +17,7 @@ public abstract class AbstractIDGeneratedEntity implements Serializable {
      * @return Value of id.
      */
     public String getId() {
-        return id;
+        return this.id;
     }
 
     /**
@@ -25,7 +25,7 @@ public abstract class AbstractIDGeneratedEntity implements Serializable {
      *
      * @param id New value of id.
      */
-    public void setId(String id) {
+    public void setId(final String id) {
         this.id = id;
     }
 }

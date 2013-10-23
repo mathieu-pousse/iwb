@@ -21,4 +21,5 @@ public interface ProductService extends GenericService<Product> {
      */
     List<Product> search(String query);
 
+    Product findByIdForLocation(String id, String locationId);
 }

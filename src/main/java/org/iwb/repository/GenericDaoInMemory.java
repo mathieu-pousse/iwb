@@ -1,8 +1,7 @@
 package org.iwb.repository;
 
 import com.google.common.hash.Hashing;
-import org.iwb.business.AbstractIDGeneratedEntity;
-import org.iwb.business.DynamicConfigurationProperty;
+import org.iwb.business.AbstractEntityWithId;
 import org.iwb.services.ConfigurationManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +22,7 @@ import static org.iwb.business.DynamicConfigurationProperty.property;
  *
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
-public class GenericDaoInMemory<E extends AbstractIDGeneratedEntity> implements GenericDao<E> {
+public class GenericDaoInMemory<E extends AbstractEntityWithId> implements GenericDao<E> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GenericDaoInMemory.class);
     protected final Map<String, E> sink = new ConcurrentHashMap<>();

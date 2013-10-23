@@ -5,7 +5,7 @@ package org.iwb.business;
  *
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
-public class SecondLife extends AbstractIDGeneratedEntity {
+public class SecondLife extends AbstractEntityWithId {
 
     private String locationId;
     private String materialId;
@@ -19,26 +19,26 @@ public class SecondLife extends AbstractIDGeneratedEntity {
     }
 
     public String getLocationId() {
-        return locationId;
+        return this.locationId;
     }
 
-    public void setLocationId(String locationId) {
+    public void setLocationId(final String locationId) {
         this.locationId = locationId;
     }
 
     public String getMaterialId() {
-        return materialId;
+        return this.materialId;
     }
 
-    public void setMaterialId(String materialId) {
+    public void setMaterialId(final String materialId) {
         this.materialId = materialId;
     }
 
     public String getTrash() {
-        return trash;
+        return this.trash;
     }
 
-    public void setTrash(String trash) {
+    public void setTrash(final String trash) {
         this.trash = trash;
     }
 }

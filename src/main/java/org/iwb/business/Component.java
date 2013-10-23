@@ -1,5 +1,7 @@
 package org.iwb.business;
 
+import java.util.List;
+
 /**
  * TODO fill me.
  *
@@ -12,6 +14,7 @@ public class Component {
     private String image;
     private String materialId;
     private Material material;
+    private List<SecondLife> secondLife;
 
     /**
      * Default constructor.
@@ -108,5 +111,13 @@ public class Component {
      */
     public void setMaterialId(final String materialId) {
         this.materialId = materialId;
+    }
+
+    public void setSecondLife(final List<SecondLife> secondLife) {
+        this.secondLife = secondLife;
+    }
+
+    public List<SecondLife> getSecondLife() {
+        return this.secondLife;
     }
 }

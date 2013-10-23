@@ -7,7 +7,7 @@ import java.util.List;
  *
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
-public class Location extends AbstractIDGeneratedEntity {
+public class Location extends AbstractEntityWithId {
 
     private String name;
     private String description;
@@ -121,7 +121,7 @@ public class Location extends AbstractIDGeneratedEntity {
      * @return Value of trashes.
      */
     public List<Trash> getTrashes() {
-        return trashes;
+        return this.trashes;
     }
 
     /**
@@ -129,7 +129,7 @@ public class Location extends AbstractIDGeneratedEntity {
      *
      * @param trashes New value of trashes.
      */
-    public void setTrashes(List<Trash> trashes) {
+    public void setTrashes(final List<Trash> trashes) {
         this.trashes = trashes;
     }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Represents a product.
  */
-public class Product extends AbstractIDGeneratedEntity {
+public class Product extends AbstractEntityWithId {
 
     private Long ean13;
     private String name;
@@ -117,7 +117,7 @@ public class Product extends AbstractIDGeneratedEntity {
      * @return Value of image.
      */
     public String getImage() {
-        return image;
+        return this.image;
     }
 
     /**
@@ -125,7 +125,7 @@ public class Product extends AbstractIDGeneratedEntity {
      *
      * @param image New value of image.
      */
-    public void setImage(String image) {
+    public void setImage(final String image) {
         this.image = image;
     }
 }

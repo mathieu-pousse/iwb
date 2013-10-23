@@ -1,6 +1,9 @@
 package org.iwb.bootstrap;
 
+import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.SerializationConfig;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -40,7 +43,7 @@ public class SpringBootstrap extends WebMvcConfigurerAdapter implements WebAppli
      * {@inheritDoc}
      */
     @Override
-    public void onStartup(ServletContext container) throws ServletException {
+    public void onStartup(final ServletContext container) throws ServletException {
         AnnotationConfigWebApplicationContext ioc = new AnnotationConfigWebApplicationContext();
         ioc.getEnvironment().setActiveProfiles("in-memory");
         ioc.register(SpringBootstrap.class);
@@ -61,13 +64,17 @@ public class SpringBootstrap extends WebMvcConfigurerAdapter implements WebAppli
      * {@inheritDoc}
      */
     @Override
-    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+    public void configureMessageConverters(final List<HttpMessageConverter<?>> converters) {
         MappingJacksonHttpMessageConverter converter = new MappingJacksonHttpMessageConverter();
         List<MediaType> mediatypes = new ArrayList<>();
         mediatypes.add(MediaType.APPLICATION_JSON);
         converter.setSupportedMediaTypes(mediatypes);
 
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(SerializationConfig.Feature.INDENT_OUTPUT, true);
+        objectMapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        objectMapper.setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
+
         objectMapper.registerModule(new Jackson1HalModule());
 
         converter.setObjectMapper(objectMapper);
