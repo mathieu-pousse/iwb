@@ -34,28 +34,30 @@ iwb-bootstrap
 /images/id/{id}
  - manages the specified image
 
+key fields
+---
 
-product.id
-product.name
-product.components *
+ - product.id
+ - product.name
+ - product.components *
 
-component.name
-component.material
+ - component.name
+ - component.material
 
-material.id
-material.name
-material.description
-material.information
+ - material.id
+ - material.name
+ - material.description
+ - material.information
 
-location.id
-location.name
-location.zips
-location.coordinate
-location.trashes
+ - location.id
+ - location.name
+ - location.zips
+ - location.coordinate
+ - location.trashes
 
-trash.color
-trash.information
+ - trash.color
+ - trash.information
 
-second-life.materialId
-second-life.locationId
-second-life.trash
+ - second-life.materialId
+ - second-life.locationId
+ - second-life.trash
