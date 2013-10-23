@@ -1,4 +1,4 @@
-package org.iwb.business;
+package org.iwb.business.configuration;
 
 /**
  * TODO fill me.

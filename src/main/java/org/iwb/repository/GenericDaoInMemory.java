@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-import static org.iwb.business.DynamicConfigurationProperty.property;
+import static org.iwb.business.configuration.DynamicConfigurationProperty.property;
 
 /**
  * A generic implementation of a restful dao working in memory.

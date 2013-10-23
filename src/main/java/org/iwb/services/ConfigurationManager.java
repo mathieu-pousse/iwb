@@ -1,6 +1,6 @@
 package org.iwb.services;
 
-import org.iwb.business.ConfigurationProperty;
+import org.iwb.business.configuration.ConfigurationProperty;
 
 /**
  * TODO fill me.

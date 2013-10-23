@@ -1,5 +1,6 @@
 package org.iwb.repository;
 
+import org.iwb.business.AbstractEntityWithId;
 import org.iwb.business.TestEntityWithId;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,13 +14,15 @@ import org.junit.runners.JUnit4;
  * @author Mathieu POUSSE <mathieu.pousse@zenika.com>
  */
 @RunWith(JUnit4.class)
-public class GenericDaoInMemoryTest {
+public abstract class GenericDaoInMemoryTest<E extends AbstractEntityWithId> {
 
-    private GenericDaoInMemory<TestEntityWithId> toTest;
+    private GenericDaoInMemory<E> toTest;
+
+    protected abstract GenericDaoInMemory<E> getDaoToTest();
 
     @Before
     public void setup() {
-        this.toTest = new TestEntityWithIdDao();
+        this.toTest = getDaoToTest();
     }
 
     @Test
